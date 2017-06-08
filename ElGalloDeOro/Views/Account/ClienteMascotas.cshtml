@@ -1,0 +1,62 @@
+﻿@model ElGalloDeOro.Models.ApplicationUser
+@using ElGalloDeOro.Models
+@{
+    ViewBag.Title = "Mis Mascotas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Mis mascotas</h2>
+
+<div class="panel-body">
+    <div class="x">
+        <table class="table table-responsive">
+            <tr>
+                <th>
+                    Nombre Mascota
+                </th>
+                <th>
+                    Raza
+                </th>
+                <th>
+                    Sexo
+                </th>
+                <th>
+                    Señas particulares
+                </th>
+                <th>
+                    Fotografía
+                </th>
+            </tr>
+
+
+
+            @foreach (var mascota in Model.mascotas)
+            {
+                int ArchivoId = 0;
+                if (mascota.archivos.Count > 0)
+                {
+                    ArchivoId = mascota.archivos.SingleOrDefault(foto => foto.tipo == "Perfil").archivoID;
+                }
+
+                <tr>
+                    <td>@(mascota.nombre)</td>
+                    <td>@(mascota.raza)</td>
+                    <td>@(mascota.sexo)</td>
+                    <td>@(mascota.color)</td>
+                    <td>
+                        @if (ArchivoId == 0)
+                {
+                            <img src="~/images/perfilDefecto.jpg" width="180" height="200" />
+                        }
+                        else
+                        {
+                            <img src="@Url.Action("download", "Archivos", new { id = ArchivoId })" width="180" height="180" />
+                        }
+                    </td>
+
+
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

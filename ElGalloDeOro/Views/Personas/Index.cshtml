@@ -1,0 +1,94 @@
+﻿@model IEnumerable<ElGalloDeOro.Models.Persona>
+
+@{
+    ViewBag.Title = "Clientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Clientes</h2>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Crear nuevo cliente", "Create")
+    </p>
+}
+
+
+
+<table class="table-responsive">
+    <tr>
+        <th>
+            Nombre completo
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccion)
+        </th>
+        <th>
+            Mascotas
+        </th>
+        <th>
+            Número de citas
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.nombreMascota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Raza)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sexo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.señasParticulares)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @(item.nombres + " " + item.apellidoP + " " + item.apellidoM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.direccion)
+            </td>
+            <td>
+                @(item.mascota.Count())
+            </td>
+            <td>
+                @(item.citas.Count())
+            </td>
+
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.nombreMascota)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Raza)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sexo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.señasParticulares)
+                </td>*@
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.personaID }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.personaID }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.personaID })
+                </td>
+            }
+
+        </tr>
+    }
+
+</table>

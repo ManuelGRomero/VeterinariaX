@@ -1,0 +1,59 @@
+﻿@model ElGalloDeOro.Models.MascotaClientes
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>MascotaClientes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.personas.nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personas.nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreMascota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreMascota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Raza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Raza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sexo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sexo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.señasParticulares)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.señasParticulares)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.mascotaID }) |
+    @Html.ActionLink("Volver atrás", "Index")
+</p>

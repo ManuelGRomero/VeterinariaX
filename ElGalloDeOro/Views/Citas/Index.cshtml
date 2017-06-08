@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ElGalloDeOro.Models.Cita>
+    @using ElGalloDeOro.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Citas</h2>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Crear nueva Cita", "Create")
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>Nombre Completo</th>
+        <th>Número de Citas</th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MotivoCita)
+            </th>*@
+        @*<th>
+                @Html.DisplayNameFor(model => model.fecha)
+            </th>*@
+        @*<th>
+                Fecha de la Cita
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var cita in Model)
+    {
+        <tr>
+            <td>@(cita.personas.nombres + " " + cita.personas.apellidoP + " " + cita.personas.apellidoM)</td>
+            <td>@(cita.personas.citas.Count())</td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => cita.Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => cita.MotivoCita)
+                </td>*@
+            @*<td>
+                    @cita.fecha.ToLongDateString()
+                </td>*@
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = cita.citaID }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = cita.citaID }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = cita.citaID })
+                </td>
+            }
+
+        </tr>
+    }
+
+</table>

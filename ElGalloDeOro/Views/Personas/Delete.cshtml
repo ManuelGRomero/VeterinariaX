@@ -1,0 +1,138 @@
+﻿@model ElGalloDeOro.Models.Persona
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Está seguro(a) que desea eliminar este cliente y sus atributos?</h3>
+<div>
+    <h4>Clientes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellidoP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellidoP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellidoM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellidoM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+    </dl>
+
+
+    <fieldset>
+        <h2>Mascotas cliente</h2>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>
+                    Nombre Mascota
+                </th>
+                <th>
+                    Raza
+                </th>
+                <th>
+                    Sexo
+                </th>
+                <th>
+                    Señas particulares
+                </th>
+                <th>
+                    Número de Citas
+                </th>
+            </tr>
+
+            @foreach (var mascota in Model.mascota)
+            {
+
+                <tr>
+                    <td>@(mascota.nombreMascota)</td>
+                    <td>@(mascota.Raza)</td>
+                    <td>@(mascota.sexo)</td>
+                    <td>@(mascota.señasParticulares)</td>
+                    <td>@(mascota.personas.citas.Count())</td>
+                </tr>
+            }
+        </table>
+    </fieldset>
+
+
+    <fieldset>
+        <h2>Citas agendadas</h2>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>
+                    Estado de la cita
+                </th>
+                <th>
+                    Motivo de la cita
+                </th>
+                <th>
+                    Fecha de la cita
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var citas in Model.citas)
+            {
+
+                <tr>
+                    <td>@(citas.Estado)</td>
+                    <td>@(citas.MotivoCita)</td>
+                    <td>@(citas.fecha.ToLongDateString())</td>
+                    <td></td>
+                </tr>
+            }
+        </table>
+    </fieldset>
+
+
+
+
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            @Html.ActionLink("Volver atrás", "Index")
+        </div>
+    }
+</div>

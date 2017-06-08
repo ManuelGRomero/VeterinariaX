@@ -1,0 +1,218 @@
+﻿@model ElGalloDeOro.Models.Persona
+    @using ElGalloDeOro.Models
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Cita nuevaCita = new Cita();
+    nuevaCita.personaID = Model.personaID;
+
+    MascotaClientes nuevaMascota = new MascotaClientes();
+    nuevaMascota.personaID = Model.personaID;
+}
+
+<h2>Detalles del Cliente</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellidoP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellidoP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellidoM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellidoM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+        @Html.ActionLink("Editar Cliente", "Edit", new { id = Model.personaID })
+    </dl>
+
+
+    <fieldset id="tipoAdd">
+        <div class="form-group">
+            <label for="Opción" class="col-md-2 control-label">Opción</label>
+            <div class="col-md-10">
+                <select id="rol" name="Opción" class="form-control">
+                    <option value="Mascota">Nueva Mascota</option>
+                    <option value="Cita">Nueva Cita</option>
+                    @*<option value="Visitante">Visitante</option>
+                        <option value="Profesor">Profesor</option*@>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset id="fsCita" style="display:none;">
+        <h4>Nueva Cita</h4>
+        @Html.Partial("../Citas/Partial_Crear", nuevaCita)
+    </fieldset>
+
+    <fieldset id="fsMascota">
+        <h4>Nueva Mascota</h4>
+        @Html.Partial("../MascotaClientes/Partial_CrearMascota", nuevaMascota)
+    </fieldset>
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Nombre Mascota
+            </th>
+            <th>
+                Raza
+            </th>
+            <th>
+                Sexo
+            </th>
+            <th>
+                Señas particulares
+            </th>
+            <th>
+                Fotografía
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        @foreach (var mascota in Model.mascota)
+        {
+            int imagenID = 0;
+            if (mascota.imagenes.Count > 0)
+            {
+                imagenID = mascota.imagenes.SingleOrDefault(foto => foto.tipo == "Perfil").imagenID;
+            }
+
+            <tr>
+                <td>@(mascota.nombreMascota)</td>
+                <td>@(mascota.Raza)</td>
+                <td>@(mascota.sexo)</td>
+                <td>@(mascota.señasParticulares)</td>
+                <td>
+                    @if (imagenID == 0)
+                    {
+                        <img onmouseover="this.width = 500; this.height = 400;" onmouseout="this.width = 150; this.height = 160;" src="~/images/perfilDefecto.jpg" width="150" height="160" />
+                    }
+                    else
+                    {
+                        <img onmouseover="this.width = 500; this.height = 400;" onmouseout="this.width = 150; this.height = 160;" src="@Url.Action("download", "Imagen", new { id = imagenID })" width="150" height="160" />
+                    }
+                </td>
+
+                <td>@Html.ActionLink("Eliminar", "Delete", "MascotaClientes", new { id = mascota.mascotaID }, null)</td>
+                <td>@Html.ActionLink("Editar", "Edit", "MascotaClientes", new { id = mascota.mascotaID }, null)</td>
+            </tr>
+        }
+    </table>
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Estado de la cita
+            </th>
+            <th>
+                Motivo de la cita
+            </th>
+            <th>
+                Fecha de la cita
+            </th>
+            <th>
+            </th>
+            <th>
+            </th>
+        </tr>
+
+
+        @foreach (var citas in Model.citas)
+        {
+            //int imagenID = 0;
+            //if (mascota.imagenes.Count > 0)
+            //{
+            //    imagenID = mascota.imagenes.SingleOrDefault(foto => foto.tipo == "Perfil").imagenID;
+            //}
+
+            <tr>
+                <td>@(citas.Estado)</td>
+                <td>@(citas.MotivoCita)</td>
+                <td>@(citas.fecha.ToLongDateString())</td>
+                @*<td>
+                        @if (imagenID == 0)
+                        {
+                            <img onmouseover="this.width = 500; this.height = 400;" onmouseout="this.width = 150; this.height = 160;" src="/Content/Img/sinfoto.gif" width="150" height="160" />
+                        }
+                        else
+                        {
+                            <img onmouseover="this.width = 500; this.height = 400;" onmouseout="this.width = 150; this.height = 160;" src="@Url.Action("download", "Imagen", new { id = imagenID })" width="150" height="160" />
+                        }
+                    </td>*@
+
+                <td>@Html.ActionLink("Eliminar", "Delete", "Citas", new { id = citas.citaID }, null)</td>
+                <td>@Html.ActionLink("Editar", "Edit", "Citas", new { id = citas.citaID }, null)</td>
+            </tr>
+        }
+    </table>
+
+
+
+
+</div>
+<p>
+    @Html.ActionLink("Volver atrás", "Index")
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $('#rol').change(function(){
+
+            //Detectar que selecciono el ususario
+            var valorSeleccionado = $(this).find(':selected').val();
+
+            //Si fue la opcion "profesor" aparecer el panel
+            if (valorSeleccionado =="Mascota") {
+                $('#fsMascota').slideDown();
+                $('#fsCita').slideUp();
+            }
+            else
+            {
+                //Desaparecerl el panel
+                $('#fsCita').slideDown();
+                $('#fsMascota').slideUp();
+            }
+
+        });
+    </script>
+
+}

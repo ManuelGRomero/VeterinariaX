@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ElGalloDeOro.Models.MascotaClientes>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.personas.nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreMascota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Raza)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.señasParticulares)
+        </th>
+        <th>
+            Fotografía
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        int imagenID = 0;
+        if (item.imagenes.Count > 0)
+        {
+            imagenID = item.imagenes.SingleOrDefault(foto => foto.tipo == "Perfil").imagenID;
+        }
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.personas.nombres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreMascota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Raza)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.señasParticulares)
+            </td>
+            <td>
+                @if (imagenID == 0)
+                {
+                    <img src="~/images/perfilDefecto.jpeg" width="150" height="160" />
+                }
+                else
+                {
+                    <img src="@Url.Action("download", "Imagen", new { id = imagenID })" width="150" height="160" />
+                }
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.mascotaID }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.mascotaID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.mascotaID })
+                </td>*@
+        </tr>
+    }
+
+</table>

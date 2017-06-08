@@ -1,0 +1,189 @@
+﻿@model IEnumerable<ElGalloDeOro.Models.Mascota>
+
+@{
+    ViewBag.Title = "Mascotas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (User.IsInRole("Admin"))
+{
+
+    <div style="margin: auto; " class="">
+
+        <p>
+            @Html.ActionLink("Crear nueva mascota en adopción", "Create")
+        </p>
+        <fieldset>
+            <legend>Mascotas en adopcion</legend>
+            <table class="table table-responsive" style="border-radius:10px; font-family:'Gill Sans MT'; font-size:16px;">
+                <tr>
+                    <th>Dueño</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.edad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.raza)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.sexo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.color)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.enfermded)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.fechaEsterilizacion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.vacuna)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Entrada)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Salida)
+                    </th>
+
+                    <th>Foto de Mascota</th>
+
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    int fotoPerfil = 0;
+                    if (item.archivos.Count > 0)
+                    {
+                        fotoPerfil = item.archivos.SingleOrDefault(foto => foto.tipo == "Perfil").archivoID;
+                    }
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.edad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.raza)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.sexo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.color)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.enfermded)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fechaEsterilizacion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.vacuna)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Entrada)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Salida)
+                        </td>
+                        <td>
+                            @if (fotoPerfil == 0)
+                            {
+                                <img style="width:180px; height:200px; margin:auto;" src="~/images/perfilDefecto.jpg" />
+                            }
+                            else
+                            {
+                                <img style="width:180px; height:200px;  margin:auto;" src="@Url.Action("download", "Archivos", new { id = fotoPerfil })" />
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.mascotaID })
+                        </td>
+                        <td>@Html.ActionLink("Detalles", "Details", new { id = item.mascotaID }) </td>
+                        <td>@Html.ActionLink("Eliminar", "Delete", new { id = item.mascotaID })</td>
+                        <td>@Html.ActionLink("Generar Reporte", "Reportes", new { id = item.mascotaID })</td>
+
+
+                    </tr>
+                }
+
+
+
+
+
+            </table>
+        </fieldset>
+    </div>
+}
+@if (User.IsInRole("Cliente"))
+{
+
+
+    <section class="tiles">
+
+
+
+        @*Catalogo mascotas*@
+        @foreach (var item in Model)
+        {
+            int fotoPerfil = 0;
+            if (item.archivos.Count > 0)
+            {
+                fotoPerfil = item.archivos.Single(foto => foto.tipo == "Perfil").archivoID;
+            }
+            if (item.Salida != null && item.Id != null)
+            {
+
+            }
+            else
+            {
+                <article style="width:300px; height:300px;" class="style1">
+                    <span class="image">
+                        @if (fotoPerfil == 0)
+                        {
+                            <img style="width:300px; height:300px;" src="~/images/perfilDefecto.jpeg" />
+                        }
+                        else
+                        {
+                            <img style="width:300px; height:300px;" src="@Url.Action("download", "Archivos", new { id = fotoPerfil })" />
+                        }
+                    </span>
+
+                    <a>
+                        <h2 style="color:#000000;"><strong>@item.nombre</strong></h2><br />
+                        <div class="content">
+                            <br />
+                            <p>Adoptame por favor.</p>
+                        </div>
+                    </a>
+
+                    @Html.ActionLink("Ver mas..", "Details", new { id = item.mascotaID })
+
+
+
+                </article>
+            }
+
+
+
+
+
+
+        }
+    </section>
+}

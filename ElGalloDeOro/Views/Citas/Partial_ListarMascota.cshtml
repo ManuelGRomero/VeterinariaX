@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ElGalloDeOro.Models.Cita>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.personas.nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MotivoCita)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.personas.nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MotivoCita)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.citaID }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.citaID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.citaID })
+        </td>
+    </tr>
+}
+
+</table>

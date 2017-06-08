@@ -1,0 +1,142 @@
+﻿@model ElGalloDeOro.Models.Mascota
+@{
+    Layout = null;
+    int fotoPerfil = 0;
+    if (Model.archivos.Count > 0)
+    {
+        fotoPerfil = Model.archivos.Single(foto => foto.tipo == "Perfil").archivoID;
+    }
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html style="font-family:'Times New Roman'" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Reporte Mascota</title>
+    @Styles.Render("~/Content/css/blue.css")
+    @Styles.Render("~/Content/css/print.css")
+    <link href="css/ie7.css" rel="stylesheet" type="text/css" />
+    <link href="css/ie6.css" rel="stylesheet" type="text/css" />
+    @*<link type="text/css" rel="stylesheet" href="/" />*@
+    @*<link type="text/css" rel="stylesheet" href="/Content/css/print.css" media="print" />*@
+    <!--[if IE 7]>
+    <link href="css/ie7.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if IE 6]>
+    <link href="css/ie6.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <script type="text/javascript" src="/Scripts/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="/Scripts/cufon.yui.js"></script>
+    <script type="text/javascript" src="/Scripts/scrollTo.js"></script>
+    <script type="text/javascript" src="/Scripts/myriad.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.colorbox.js"></script>
+    <script type="text/javascript" src="/Scripts/custom.js"></script>
+    <script type="text/javascript">
+		Cufon.replace('h1,h2');
+    </script>
+</head>
+<body>
+    <!-- Begin Wrapper -->
+    <div id="wrapper">
+        <div class="wrapper-top"></div>
+        <div class="wrapper-mid">
+            <!-- Begin Paper -->
+            <div id="paper">
+                <div class="paper-top"></div>
+                <div id="paper-mid">
+                    <div class="entry">
+                        <!-- Begin Image -->
+
+                        @if (fotoPerfil == 0)
+                        {
+                            <img class="portrait" style="width:180px; height:200px; margin:auto;" src="~/images/perfilDefecto.jpeg" />
+                        }
+                        else
+                        {
+                            <img class="portrait" style="width:180px; height:200px; margin:auto;" src="@Url.Action("download", "Archivos", new { id = fotoPerfil })" />
+                        }
+                        <!-- End Image -->
+                        <!-- Begin Personal Information -->
+                        <div class="self">
+                            <h1 class="name">
+                                Veterinaria <br />gallo de oro
+                                <span>Tu mejor opcion</span>
+                            </h1>
+                            <ul>
+                                <li class="ad">111 Lorem Street, 34785, Ipsum City</li>
+                                <li class="mail">johnsmith@business.com</li>
+                                <li class="tel">+11 444 555 22 33</li>
+                                <li class="web">www.businessweb.com</li>
+                            </ul>
+                        </div>
+                        <!-- End Personal Information -->
+                        <!-- Begin Social -->
+                        <div class="social">
+                            <ul></ul>
+                        </div>
+                        <!-- End Social -->
+                    </div>
+                    <!-- Begin 1st Row -->
+                    <div class="entry">
+                        <h2>Datos Persona</h2>
+                        <p>
+                            <strong>Nombre: </strong> @Html.DisplayFor(m => m.User.nombre)<br />
+                            <strong>Apellido Paterno: </strong>@Html.DisplayFor(m => m.User.apellidoP)<br />
+                            <strong>Apellido Materno:</strong>@Html.DisplayFor(m => m.User.apellidoM)<br />
+                            <strong>Fecha Nacimiento: </strong>@Html.DisplayFor(m => m.User.fechaNac)<br />
+                            <strong>Teléfono: </strong>@Html.DisplayFor(m => m.User.telefono)<br />
+                            <strong>Domicilio: </strong>@Html.DisplayFor(m => m.User.domicilio)<br />
+                            <strong>Ciudad: </strong> @Html.DisplayFor(m => m.User.ciudad)<br />
+
+
+
+
+                        </p>
+
+                    </div>
+                    <!-- End 1st Row -->
+                    <!-- Begin 2nd Row -->
+                    <div class="entry">
+                        <h2>Datos Mascota</h2>
+                        <div class="content">
+
+                            <p>
+                                <strong>Nombre: </strong>@Html.DisplayFor(m => m.nombre)<br />
+                                <strong>Raza: </strong>@Html.DisplayFor(m => m.raza)<br />
+                                <strong>Sexo: </strong>@Html.DisplayFor(m => m.sexo)<br />
+                                <strong>Color: </strong>@Html.DisplayFor(m => m.color)<br />
+                                <strong>Edad: </strong>@Html.DisplayFor(m => m.edad)<br />
+                                <strong>Enfermedades: </strong>@Html.DisplayFor(m => m.enfermded)<br />
+                                <strong>Vacunas: </strong>@Html.DisplayFor(m => m.vacuna)<br />
+                                <strong>Fecha de Esterilización: </strong>@Html.DisplayFor(m => m.fechaEsterilizacion)<br />
+                                <strong>Fecha entrada al Control Animal: </strong>@Html.DisplayFor(m => m.Entrada)<br />
+                                <strong>Fecha Salida del Control Animal: </strong>@Html.DisplayFor(m => m.Salida)<br />
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End 2nd Row -->
+                    <!-- Begin 3rd Row -->
+                    <div class="entry">
+                        <div class="content">
+                            <ul class="info">
+                                <li>_____________________________</li>
+                                <li><strong>Firma del dueño de la mascota</strong></li>
+                            </ul>
+                            <input type="button" class="btn btn-success" id="imprimir" name="imprimir" onmousedown="imprimir()" onclick="imprimir()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function imprimir() {
+            window.print();
+            document.getElementById("imprimir").style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
+

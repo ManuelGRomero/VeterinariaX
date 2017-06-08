@@ -1,0 +1,106 @@
+﻿@model ElGalloDeOro.Models.Mascota
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Está seguro(a) que desea eliminar ésta mascota?</h3>
+<div>
+    <h4>Mascota</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.raza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.raza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sexo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sexo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.edad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.edad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vacuna)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vacuna)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.enfermded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.enfermded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaEsterilizacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaEsterilizacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Entrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salida)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Volver atrás", "Index")
+        </div>
+    }
+</div>

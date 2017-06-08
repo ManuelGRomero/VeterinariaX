@@ -1,0 +1,58 @@
+﻿@model ElGalloDeOro.Models.Cita
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar Cita</h2>
+
+<h3>¿Está seguro(a) que desea eliminar ésta cita?</h3>
+<div>
+    @*<h4>Cita</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.personas.nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personas.nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotivoCita)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotivoCita)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            @Html.ActionLink("Volver atrás", "Index")
+        </div>
+    }
+</div>

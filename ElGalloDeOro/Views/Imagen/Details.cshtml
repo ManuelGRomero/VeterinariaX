@@ -1,0 +1,59 @@
+﻿@model ElGalloDeOro.Models.Imagen
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Imagen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.mascota.nombreMascota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mascota.nombreMascota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.formatoContenido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.formatoContenido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contenido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contenido)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.imagenID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

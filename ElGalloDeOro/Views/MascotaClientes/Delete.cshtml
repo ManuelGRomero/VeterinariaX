@@ -1,0 +1,65 @@
+﻿@model ElGalloDeOro.Models.MascotaClientes
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar Mascota</h2>
+
+<h3>¿Está seguro(a) que desea eliminar ésta mascota?</h3>
+<div>
+    <h4>MascotaClientes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.personas.nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personas.nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreMascota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreMascota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Raza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Raza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sexo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sexo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.señasParticulares)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.señasParticulares)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Volver atrás", "Index")
+        </div>
+    }
+</div>

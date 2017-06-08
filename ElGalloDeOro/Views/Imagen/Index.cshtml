@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ElGalloDeOro.Models.Imagen>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.mascota.nombreMascota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.formatoContenido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contenido)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.mascota.nombreMascota)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.formatoContenido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contenido)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.imagenID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.imagenID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.imagenID })
+        </td>
+    </tr>
+}
+
+</table>
