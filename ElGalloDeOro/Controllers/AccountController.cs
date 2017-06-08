@@ -133,7 +133,7 @@ namespace ElGalloDeOro.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Intentos de inicio de sesión no válidos");
                     return View(model);
             }
         }
