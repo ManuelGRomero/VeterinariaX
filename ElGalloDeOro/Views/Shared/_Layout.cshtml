@@ -49,28 +49,26 @@
             </div>
         </header>
 
-
-
         <!-- Menu -->
         <nav id="menu">
-            <h2>Menu</h2>
             <ul>
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 <li>@Html.ActionLink("About", "About", "Home")</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 @if (User.IsInRole("Cliente") || User.IsInRole("Admin"))
-                {
+            {
                     <li>@Html.ActionLink("Mascotas en adopcion", "Index", "Mascotas")</li>
                     <li>@Html.ActionLink("Mis Mascotas", "ClienteMascotas", "Account")</li>
                 }
                 @if (User.IsInRole("Admin"))
-                {
+            {
                     <li>@Html.ActionLink("Usuarios", "Index", "Account")</li>
                     @*<li>@Html.ActionLink("Citas", "Index", "Citas")</li>*@
                     <li>@Html.ActionLink("Clientes", "Index", "Personas")</li>
                 }
                 <li>@Html.Partial("_LoginPartial")</li>
             </ul>
+
         </nav>
 
         <!-- Main -->
