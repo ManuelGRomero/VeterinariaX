@@ -10,7 +10,7 @@ namespace ElGalloDeOro.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Mascotas");
         }
 
         public ActionResult About()

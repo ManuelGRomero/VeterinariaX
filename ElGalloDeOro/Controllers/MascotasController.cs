@@ -12,20 +12,20 @@ using Microsoft.AspNet.Identity;
 
 namespace ElGalloDeOro.Controllers
 {
-    [Authorize]
+    
     public class MascotasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Mascotas
-        [Authorize(Roles = "Admin, Cliente")]
+        
         public ActionResult Index()
         {
             return View(db.mascotas.ToList());
         }
 
         // GET: Mascotas/Details/5
-        [Authorize(Roles = "Admin, Cliente")]
+        
         public ActionResult Details(int? id)
         {
             if (id == null)
