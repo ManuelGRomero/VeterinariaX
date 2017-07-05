@@ -61,21 +61,19 @@
     </dl>
 
 
-    <fieldset id="tipoAdd">
+    @*<fieldset id="tipoAdd">
         <div class="form-group">
             <label for="Opción" class="col-md-2 control-label">Opción</label>
             <div class="col-md-10">
                 <select id="rol" name="Opción" class="form-control">
                     <option value="Mascota">Nueva Mascota</option>
                     <option value="Cita">Nueva Cita</option>
-                    @*<option value="Visitante">Visitante</option>
-                        <option value="Profesor">Profesor</option*@>
                 </select>
             </div>
         </div>
-    </fieldset>
+    </fieldset>*@
 
-    <fieldset id="fsCita" style="display:none;">
+    @*<fieldset id="fsCita" style="display:none;">
         <h4>Nueva Cita</h4>
         @Html.Partial("../Citas/Partial_Crear", nuevaCita)
     </fieldset>
@@ -83,7 +81,7 @@
     <fieldset id="fsMascota">
         <h4>Nueva Mascota</h4>
         @Html.Partial("../MascotaClientes/Partial_CrearMascota", nuevaMascota)
-    </fieldset>
+    </fieldset>*@
 
     <table class="table table-striped">
         <tr>
