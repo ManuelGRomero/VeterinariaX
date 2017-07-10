@@ -26,6 +26,19 @@ namespace ElGalloDeOro
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            //Se carga el script y el CSS de los datatables
+            bundles.Add(new ScriptBundle("~/bundles/dataTables").Include(
+                        "~/Scripts/jquery.dataTables.min.js",
+                        "~/Scripts/dataTables.buttons.min.js",
+                        "~/Scripts/dataTables.select.min.js",
+                        "~/Scripts/customFunctions.js"));
+
+            bundles.Add(new StyleBundle("~/Content/dataTables").Include(
+                      "~/Content/jquery.dataTables.min.css",
+                      "~/Content/buttons.dataTables.min.css",
+                      "~/Content/select.dataTables.min.css"));
+
         }
     }
 }
