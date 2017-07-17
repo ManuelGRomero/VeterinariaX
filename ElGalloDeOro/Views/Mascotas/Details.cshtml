@@ -9,6 +9,8 @@
     {
         fotoPerfil = Model.archivos.Single(foto => foto.tipo == "Perfil").archivoID;
     }
+
+    
 }
 
 <h2>Detalles</h2>
@@ -34,90 +36,90 @@
 
 
 <div class="content">
-    <div class="x" style="color:white;">
+    <div class="x" >
         <form method="post" class="form-group" action="Adoptar">
 
             <h4>Mascota</h4>
             <hr />
             <dl class="dl-horizontal">
                 <dt>
-                    @Html.DisplayNameFor(model => model.nombre)
+                    <strong style="color:white;">@Html.DisplayNameFor(model => model.nombre)</strong>  
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.nombre)
+                    <strong style="color:grey;">@Html.DisplayFor(model => model.nombre)</strong>
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.raza)
+                    <strong style="color:white;">@Html.DisplayNameFor(model => model.raza)</strong>  
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.raza)
+                    <strong style="color:grey;">@Html.DisplayFor(model => model.raza)</strong>  
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.color)
+                    <strong style="color:white;">@Html.DisplayNameFor(model => model.color)</strong>  
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.color)
+                    <strong style="color:grey;">@Html.DisplayFor(model => model.color)</strong> 
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.sexo)
+                    <strong style="color:white;">@Html.DisplayNameFor(model => model.sexo)</strong>    
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.sexo)
+                    <strong style="color:grey;">@Html.DisplayFor(model => model.sexo)</strong>  
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.edad)
+                    <strong style="color:white;">@Html.DisplayNameFor(model => model.edad)</strong>   
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.edad)
+                    <strong style="color:grey;">@Html.DisplayFor(model => model.edad)</strong> 
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.vacuna)
+                    <strong style="color:white;">@Html.DisplayNameFor(model => model.vacuna)</strong>   
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.vacuna)
+                    <strong style="color:grey;">@Html.DisplayFor(model => model.vacuna)</strong>  
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.enfermded)
+                    <strong style="color:white;">@Html.DisplayNameFor(model => model.enfermded)</strong>  
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.enfermded)
+                    <strong style="color:grey;">@Html.DisplayFor(model => model.enfermded)</strong>  
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.fechaEsterilizacion)
+                    <strong style="color:white;">@Html.DisplayNameFor(model => model.fechaEsterilizacion)</strong> 
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.fechaEsterilizacion)
+                    <strong style="color:grey;">@Html.DisplayFor(model => model.fechaEsterilizacion)</strong>  
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.Entrada)
+                    <strong style="color:white;">@Html.DisplayNameFor(model => model.Entrada)</strong>   
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.Entrada)
+                    <strong style="color:grey;">@Html.DisplayFor(model => model.Entrada)</strong>  
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.Salida)
+                    <strong style="color:white;">@Html.DisplayNameFor(model => model.Salida)</strong>  
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.Salida)
+                    <strong style="color:grey;">@Html.DisplayFor(model => model.Salida)</strong>  
                 </dd>
 
             </dl>
@@ -159,6 +161,5 @@
     {
         @Html.ActionLink("Editar", "Edit", new { id = Model.mascotaID })
     }
-    |
     @Html.ActionLink("Volver atrás", "Index")
 </p>

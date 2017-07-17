@@ -67,7 +67,7 @@ namespace ElGalloDeOro.Controllers
                 else
                 {
                     //Regresar una vista
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index","Personas");
                 }
             }
 

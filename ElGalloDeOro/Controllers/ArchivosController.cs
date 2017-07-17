@@ -14,7 +14,7 @@ namespace ElGalloDeOro.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
-        [Authorize]
+        //[Authorize]
         public FileResult download(int id)
         {
             Archivos ar = db.archivos.Find(id);
