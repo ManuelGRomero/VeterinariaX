@@ -143,7 +143,7 @@ namespace ElGalloDeOro.Controllers
             Cita cita = db.citas.Find(id);
             db.citas.Remove(cita);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Personas");
         }
         [Authorize(Roles = "Admin")]
         protected override void Dispose(bool disposing)

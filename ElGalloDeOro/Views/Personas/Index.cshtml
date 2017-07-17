@@ -61,11 +61,11 @@
                             @if (User.IsInRole("Admin"))
                 {
                                 <td>
-                                    @Html.ActionLink("Nueva Cita", "Create", "Citas", new { id = item.personaID }, null) <br />
-                                    @Html.ActionLink("Nueva Mascota", "Create", "MascotaClientes", new { id = item.personaID }, null)<br />
-                                    @Html.ActionLink("Editar", "Edit", new { id = item.personaID }) <br />
-                                    @Html.ActionLink("Detalles", "Details", new { id = item.personaID }) <br />
-                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.personaID })
+                                    @Html.ActionLink(" Nueva Cita", "Create", "Citas", new { id = item.personaID }, htmlAttributes: new { @class = "fa fa-pencil" })<br />
+                                    @Html.ActionLink(" Nueva Mascota", "Create", "MascotaClientes", new { id = item.personaID }, htmlAttributes: new { @class = "fa fa-pencil" })<br />
+                                    @Html.ActionLink(" Editar", "Edit", new { id = item.personaID }, htmlAttributes: new { @class = "fa fa-pencil-square-o" })<br />
+                                    @Html.ActionLink(" Detalles", "Details", new { id = item.personaID }, htmlAttributes: new { @class = "fa fa-eye" })<br />
+                                    @Html.ActionLink(" Eliminar", "Delete", new { id = item.personaID }, htmlAttributes: new { @class = "fa fa-times" })
                                 </td>
                             }
 
