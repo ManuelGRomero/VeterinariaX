@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ElGalloDeOro.Models;
+using System.ComponentModel;
+
 
 namespace ElGalloDeOro.Controllers
 {
@@ -20,7 +22,22 @@ namespace ElGalloDeOro.Controllers
         public ActionResult Index()
         {
             var citas = db.citas.Include(c => c.personas);
-            return View(citas.ToList());
+            //obtiene el dia de hoy
+            DateTime today = DateTime.Now;
+            //una lista donde guardar a las citas por venir
+            LinkedList<Cita> cita = new LinkedList<Cita>();
+            //Recorremos todas las citas 
+            foreach (Cita item in citas)
+            {
+                //Comparamos si es mayor o igual la fecha de la cita con el dia de hoy
+                if (item.fecha>=today)
+                {
+                    //Agregamos la Cita a la lista
+                    cita.AddLast(item);
+                }
+            }
+            //la mandamos toda la lista de las citas a la vista
+            return View(cita.ToList());
         }
 
         // GET: Citas/Details/5
