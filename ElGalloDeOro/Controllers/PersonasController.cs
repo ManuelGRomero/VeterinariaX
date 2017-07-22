@@ -35,6 +35,9 @@ namespace ElGalloDeOro.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.citasHoy = db.citas.Where(cita=>cita.fecha == DateTime.Now).ToList();
+            var ayer = DateTime.Now.Day - 1;
+            ViewBag.citasPasadas = db.citas.Where(cita=> cita.fecha <= DateTime.Now).ToList();
             return View(persona);
         }
 
