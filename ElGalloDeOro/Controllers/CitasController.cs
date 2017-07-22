@@ -30,7 +30,7 @@ namespace ElGalloDeOro.Controllers
             foreach (Cita item in citas)
             {
                 //Comparamos si es mayor o igual la fecha de la cita con el dia de hoy
-                if (item.fecha>=today)
+                if (item.fecha>today)
                 {
                     //Agregamos la Cita a la lista
                     cita.AddLast(item);
