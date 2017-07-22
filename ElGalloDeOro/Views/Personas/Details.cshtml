@@ -12,53 +12,58 @@
     nuevaMascota.personaID = Model.personaID;
 }
 
-<h2>Detalles del Cliente</h2>
+<div class=" panel panel-primary">
+    <div class="panel-heading">
+        <div class="panel-title"><strong>Detalles de Cliente</strong></div>
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal col-md-6">
+            <dt>
+                @Html.DisplayNameFor(model => model.nombres)
+            </dt>
 
+            <dd>
+                @Html.DisplayFor(model => model.nombres)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.apellidoP)
+            </dt>
+        
+            <dd>
+                @Html.DisplayFor(model => model.apellidoP)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.apellidoM)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.apellidoM)
+            </dd>
+       </dl>
+        <dl class="dl-horizontal col-md-6">        
+            <dt>
+                @Html.DisplayNameFor(model => model.telefono)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.telefono)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.direccion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.direccion)
+            </dd>
+        </dl>                 
+        <a href="@Url.Action("Edit", new { id = Model.personaID })">
+            <i class="glyphicon glyphicon-pencil"></i> Editar
+        </a>
+    </div>
+   
+</div>
 <div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.nombres)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.nombres)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.apellidoP)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.apellidoP)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.apellidoM)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.apellidoM)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.telefono)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.telefono)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.direccion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.direccion)
-        </dd>
-
-        @Html.ActionLink("Editar Cliente", "Edit", new { id = Model.personaID })
-    </dl>
 
 
     @*<fieldset id="tipoAdd">
@@ -83,102 +88,112 @@
         @Html.Partial("../MascotaClientes/Partial_CrearMascota", nuevaMascota)
     </fieldset>*@
 
-    <table class="table table-striped">
-        <tr>
-            <th>
-                Nombre Mascota
-            </th>
-            <th>
-                Raza
-            </th>
-            <th>
-                Sexo
-            </th>
-            <th>
-                Señas particulares
-            </th>
-            <th>
-                Fotografía
-            </th>
-            <th></th>
-            <th></th>
-        </tr>
-
-        @foreach (var mascota in Model.mascota)
-        {
-            int imagenID = 0;
-            if (mascota.imagenes.Count > 0)
-            {
-                imagenID = mascota.imagenes.SingleOrDefault(foto => foto.tipo == "Perfil").imagenID;
-            }
-
+    <table class="table table-striped datatablejs">
+        <thead style="background-color:#ffe16a">
             <tr>
-                <td>@(mascota.nombreMascota)</td>
-                <td>@(mascota.Raza)</td>
-                <td>@(mascota.sexo)</td>
-                <td>@(mascota.señasParticulares)</td>
-                <td>
-                    @if (imagenID == 0)
-                    {
-                        <img onmouseover="this.width = 500; this.height = 400;" onmouseout="this.width = 150; this.height = 160;" src="~/images/perfilDefecto.jpg" width="150" height="160" />
-                    }
-                    else
-                    {
-                        <img onmouseover="this.width = 500; this.height = 400;" onmouseout="this.width = 150; this.height = 160;" src="@Url.Action("download", "Imagen", new { id = imagenID })" width="150" height="160" />
-                    }
-                </td>
-
-                <td>@Html.ActionLink("Eliminar", "Delete", "MascotaClientes", new { id = mascota.mascotaID }, null)</td>
-                <td>@Html.ActionLink("Editar", "Edit", "MascotaClientes", new { id = mascota.mascotaID }, null)</td>
+                <th>
+                    Nombre Mascota
+                </th>
+                <th>
+                    Raza
+                </th>
+                <th>
+                    Sexo
+                </th>
+                <th>
+                    Señas particulares
+                </th>
+                <th>
+                    Fotografía
+                </th>
+                <th></th>
+                <th></th>
             </tr>
-        }
-    </table>
+        </thead>
+      
+        <tbody>
+            @foreach (var mascota in Model.mascota)
+            {
+                int imagenID = 0;
+                if (mascota.imagenes.Count > 0)
+                {
+                    imagenID = mascota.imagenes.SingleOrDefault(foto => foto.tipo == "Perfil").imagenID;
+                }
 
-    <table class="table table-striped">
-        <tr>
-            <th>
-                Estado de la cita
-            </th>
-            <th>
-                Motivo de la cita
-            </th>
-            <th>
-                Fecha de la cita
-            </th>
-            <th>
-            </th>
-            <th>
-            </th>
-        </tr>
-
-
-        @foreach (var citas in Model.citas)
-        {
-            //int imagenID = 0;
-            //if (mascota.imagenes.Count > 0)
-            //{
-            //    imagenID = mascota.imagenes.SingleOrDefault(foto => foto.tipo == "Perfil").imagenID;
-            //}
-            
-            <tr>
-                <td>@(citas.Estado)</td>
-                <td>@(citas.MotivoCita)</td>
-                <td>@(citas.fecha.ToLongDateString())</td>
-                @*<td>
+                <tr>
+                    <td>@(mascota.nombreMascota)</td>
+                    <td>@(mascota.Raza)</td>
+                    <td>@(mascota.sexo)</td>
+                    <td>@(mascota.señasParticulares)</td>
+                    <td>
                         @if (imagenID == 0)
                         {
-                            <img onmouseover="this.width = 500; this.height = 400;" onmouseout="this.width = 150; this.height = 160;" src="/Content/Img/sinfoto.gif" width="150" height="160" />
+                            <img onmouseover="this.width = 500; this.height = 400;" onmouseout="this.width = 150; this.height = 160;" src="~/images/perfilDefecto.jpg" width="150" height="160" />
                         }
                         else
                         {
                             <img onmouseover="this.width = 500; this.height = 400;" onmouseout="this.width = 150; this.height = 160;" src="@Url.Action("download", "Imagen", new { id = imagenID })" width="150" height="160" />
                         }
-                    </td>*@
+                    </td>
 
-                <td>@Html.ActionLink("Eliminar", "Delete", "Citas", new { id = citas.citaID }, null)</td>
-                <td>@Html.ActionLink("Editar", "Edit", "Citas", new { id = citas.citaID }, null)</td>
+                    <td>@Html.ActionLink("Eliminar", "Delete", "MascotaClientes", new { id = mascota.mascotaID }, null)</td>
+                    <td>@Html.ActionLink("Editar", "Edit", "MascotaClientes", new { id = mascota.mascotaID }, null)</td>
+                </tr>
+            }
+        </tbody>
+        
+    </table>
+
+    <table class="table table-striped datatablejs">
+        <thead style="background-color:#ffe16a">
+            <tr>
+                <th>
+                    Estado de la cita
+                </th>
+                <th>
+                    Motivo de la cita
+                </th>
+                <th>
+                    Fecha de la cita
+                </th>
+                <th>
+                </th>
+                <th>
+                </th>
             </tr>
-        }
+        </thead>
+        
+
+        <tbody>
+            @foreach (var citas in Model.citas)
+            {
+                //int imagenID = 0;
+                //if (mascota.imagenes.Count > 0)
+                //{
+                //    imagenID = mascota.imagenes.SingleOrDefault(foto => foto.tipo == "Perfil").imagenID;
+                //}
+
+                <tr>
+                    <td>@(citas.Estado)</td>
+                    <td>@(citas.MotivoCita)</td>
+                    <td>@(citas.fecha.ToLongDateString())</td>
+                    @*<td>
+                    @if (imagenID == 0)
+                    {
+                        <img onmouseover="this.width = 500; this.height = 400;" onmouseout="this.width = 150; this.height = 160;" src="/Content/Img/sinfoto.gif" width="150" height="160" />
+                    }
+                    else
+                    {
+                        <img onmouseover="this.width = 500; this.height = 400;" onmouseout="this.width = 150; this.height = 160;" src="@Url.Action("download", "Imagen", new { id = imagenID })" width="150" height="160" />
+                    }
+                </td>*@
+
+                    <td>@Html.ActionLink("Eliminar", "Delete", "Citas", new { id = citas.citaID }, null)</td>
+                    <td>@Html.ActionLink("Editar", "Edit", "Citas", new { id = citas.citaID }, null)</td>
+                </tr>
+            }
+        </tbody>
+        
     </table>
 
 
