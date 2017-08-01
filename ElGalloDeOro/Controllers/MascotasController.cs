@@ -173,15 +173,7 @@ namespace ElGalloDeOro.Controllers
                         db.archivos.Add(fotoPerfil);
                     }
                 }
-
-                //    //Crearemos un nuevo registro de archivo                   
-                //    Archivos fotoPerfil = db.archivos.Single(foto => foto.mascota.mascotaID == mascota.mascotaID);
-                //    var reader = new BinaryReader(fotoUpload.InputStream);
-                //    fotoPerfil.contenido = reader.ReadBytes(fotoUpload.ContentLength);
-                //    //Se modifica el registro de la foto
-                //    mascota.archivos = new List<Archivos> { fotoPerfil };
-                //    db.Entry(mascota).State = EntityState.Modified;
-                //}
+                
                 db.Entry(mascota).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

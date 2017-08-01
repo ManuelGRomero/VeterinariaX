@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-
 namespace ElGalloDeOro.Models
 {
     public class Archivos
@@ -24,7 +23,6 @@ namespace ElGalloDeOro.Models
         public string tipo { get; set; }
         public string formatoContenido { get; set; }
         public byte[] contenido { get; set; }
-
 
         //un archivo pertenece a una mascota
         public int mascotaID { get; set; }

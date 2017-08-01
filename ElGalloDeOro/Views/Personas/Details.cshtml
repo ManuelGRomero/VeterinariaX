@@ -17,7 +17,7 @@
         <div class="panel-title"><strong>Detalles de Cliente</strong></div>
     </div>
     <div class="panel-body">
-        <dl class="dl-horizontal col-md-6">
+        <dl class="dl-horizontal col-md-4">
             <dt>
                 @Html.DisplayNameFor(model => model.nombres)
             </dt>
@@ -41,7 +41,7 @@
                 @Html.DisplayFor(model => model.apellidoM)
             </dd>
        </dl>
-        <dl class="dl-horizontal col-md-6">        
+        <dl class="dl-horizontal col-md-4">        
             <dt>
                 @Html.DisplayNameFor(model => model.telefono)
             </dt>
@@ -57,7 +57,7 @@
                 @Html.DisplayFor(model => model.direccion)
             </dd>
         </dl>                 
-        <a href="@Url.Action("Edit", new { id = Model.personaID })">
+        <a class="col-md-4" href="@Url.Action("Edit", new { id = Model.personaID })">
             <i class="glyphicon glyphicon-pencil"></i> Editar
         </a>
     </div>
@@ -128,16 +128,16 @@
                     <td>
                         @if (imagenID == 0)
                         {
-                            <img onmouseover="this.width = 500; this.height = 400;" onmouseout="this.width = 150; this.height = 160;" src="~/images/perfilDefecto.jpg" width="150" height="160" />
+                            <img onmouseover="this.width = 250; this.height = 200;" onmouseout="this.width = 150; this.height = 150;" src="~/images/perfilDefecto.jpg" width="150" height="160" />
                         }
                         else
                         {
-                            <img onmouseover="this.width = 500; this.height = 400;" onmouseout="this.width = 150; this.height = 160;" src="@Url.Action("download", "Imagen", new { id = imagenID })" width="150" height="160" />
+                            <img onmouseover="this.width = 250; this.height = 200;" onmouseout="this.width = 150; this.height = 150;" src="@Url.Action("download", "Imagen", new { id = imagenID })" width="150" height="160" />
                         }
                     </td>
 
-                    <td>@Html.ActionLink("Eliminar", "Delete", "MascotaClientes", new { id = mascota.mascotaID }, null)</td>
-                    <td>@Html.ActionLink("Editar", "Edit", "MascotaClientes", new { id = mascota.mascotaID }, null)</td>
+                    <td>@Html.ActionLink(" Eliminar", "Delete", "MascotaClientes", new { id = mascota.mascotaID }, htmlAttributes: new { @class = "fa fa-times" })</td>
+                    <td>@Html.ActionLink(" Editar", "Edit", "MascotaClientes", new { id = mascota.mascotaID }, htmlAttributes: new { @class = "fa fa-pencil" })</td>
                 </tr>
             }
         </tbody>
@@ -188,8 +188,8 @@
                     }
                 </td>*@
 
-                    <td>@Html.ActionLink("Eliminar", "Delete", "Citas", new { id = citas.citaID }, null)</td>
-                    <td>@Html.ActionLink("Editar", "Edit", "Citas", new { id = citas.citaID }, null)</td>
+                    <td>@Html.ActionLink(" Eliminar", "Delete", "Citas", new { id = citas.citaID }, htmlAttributes: new { @class = "fa fa-times" })</td>
+                    <td>@Html.ActionLink(" Editar", "Edit", "Citas", new { id = citas.citaID }, htmlAttributes: new { @class = "fa fa-pencil" })</td>
                 </tr>
             }
         </tbody>

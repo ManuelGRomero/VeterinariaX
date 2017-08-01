@@ -217,7 +217,8 @@ namespace ElGalloDeOro.Controllers
                     fechaNac = model.fechaNac,
                     domicilio = model.domicilio,
                     telefono = model.telefono,
-                    ciudad = model.ciudad
+                    ciudad = model.ciudad,
+                    rolid = model.rol
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

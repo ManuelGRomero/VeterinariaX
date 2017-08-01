@@ -59,9 +59,9 @@
         <!-- Menu -->
         <nav id="menu">
             <ul>
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                <li>@Html.ActionLink("Acerca de nosotros", "About", "Home")</li>
+                <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
                 @if (User.IsInRole("Cliente") || User.IsInRole("Admin"))
             {
                     <li>@Html.ActionLink("Mascotas en adopcion", "Index", "Mascotas")</li>

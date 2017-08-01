@@ -22,7 +22,7 @@ namespace ElGalloDeOro.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contáctanos o visitanos";
 
             return View();
         }

@@ -137,7 +137,7 @@ namespace ElGalloDeOro.Controllers
                 //Si llega tan lejos, es que todo salió bien
                 return RedirectToAction("Index", "Personas");
             }
-            ViewBag.personaID = new SelectList(db.personas, "personaID", "nombres", mascota.personaID);
+            //ViewBag.personaID = new SelectList(db.personas, "personaID", "nombres", mascota.personaID);
 
             return View();
         }

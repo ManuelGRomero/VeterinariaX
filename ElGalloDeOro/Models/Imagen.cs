@@ -28,7 +28,6 @@ namespace ElGalloDeOro.Models
         public int mascotaID { get; set; }
         public MascotaClientes mascota { get; set; }
 
-
         public static byte[] httpPostedFileBaseToByteArray(HttpPostedFileBase tpfb)
         {
             var reader = new System.IO.BinaryReader(tpfb.InputStream);
